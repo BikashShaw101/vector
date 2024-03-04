@@ -17,17 +17,13 @@ export const NewButton = () => {
             align="start"
             sideOffset={18}
           >
-            <button
-              type="button"
-              title="add"
-              className="h-full bg-white/25 w-full rounded-md flex items-center justify-center opacity-60 hover:opacity-100 transition"
-            >
+            <div className="h-full cursor-pointer bg-white/25 w-full rounded-md flex items-center justify-center opacity-60 hover:opacity-100 transition">
               <Plus className="text-white" />
-            </button>
+            </div>
           </Hint>
         </div>
       </DialogTrigger>
-      <DialogContent className="p-0 bg-transparent border-none max-w-[480px]">
+      <DialogContent className="p-0 bg-transparent border-none max-w-[540px]">
         <CreateOrganization />
       </DialogContent>
     </Dialog>

@@ -3,9 +3,9 @@ import React from "react";
 
 export const Loadng = () => {
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center bg-slate-900 ">
+    <div className="h-full w-full flex flex-col items-center justify-center">
       <Image
-        src={"/vector3.png"}
+        src={"/bicycle.gif"}
         alt="Logo"
         width={120}
         height={120}
