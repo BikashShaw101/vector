@@ -18,15 +18,15 @@ import { MoreHorizontal } from "lucide-react";
 interface BoardCardProps {
   id: string;
   title: string;
-  authorId: string;
   authorName: string;
-  imageUrl: string;
+  authorId: string;
   createdAt: number;
+  imageUrl: string;
   orgId: string;
   isFavourite: boolean;
 }
 
-const BoardCard = ({
+export const BoardCard = ({
   id,
   title,
   authorId,
@@ -96,4 +96,3 @@ BoardCard.Skeleton = function BoardCardSkeleton() {
   );
 };
 
-export default BoardCard;

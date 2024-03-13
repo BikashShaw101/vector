@@ -35,4 +35,4 @@ const EmptyOrg = () => {
   );
 };
 
-export default EmptyOrg;
+export { EmptyOrg };

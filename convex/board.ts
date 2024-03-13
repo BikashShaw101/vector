@@ -45,11 +45,25 @@ export const remove = mutation({
     id: v.id("boards"),
   },
   handler: async (ctx, args) => {
-    const itentity = await ctx.auth.getUserIdentity();
+    const identity = await ctx.auth.getUserIdentity();
 
-    if (!itentity) {
+    if (!identity) {
       throw new Error("Unauthorized");
     }
+
+    const userId = identity.subject;
+
+    const existingFavourites = await ctx.db
+      .query("userFavourites")
+      .withIndex("by_user_board", (q) =>
+        q.eq("userId", userId).eq("boardId", args.id)
+      )
+      .unique();
+
+    if (existingFavourites) {
+      await ctx.db.delete(existingFavourites._id);
+    }
+
     await ctx.db.delete(args.id);
   },
 });
@@ -96,8 +110,8 @@ export const favourite = mutation({
 
     const existingFavourites = await ctx.db
       .query("userFavourites")
-      .withIndex("by_user_board_org", (q) =>
-        q.eq("userId", userId).eq("boardId", board._id).eq("orgId", args.orgId)
+      .withIndex("by_user_board", (q) =>
+        q.eq("userId", userId).eq("boardId", board._id)
       )
       .unique();
 

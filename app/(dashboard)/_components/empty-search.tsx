@@ -17,4 +17,4 @@ const EmptySearch = () => {
   );
 };
 
-export default EmptySearch;
+export { EmptySearch };
