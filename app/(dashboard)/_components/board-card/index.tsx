@@ -2,9 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "sonner";
 
 import { Actions } from "@/components/actions";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useApiMutation } from "@/hooks/use-api-mutation";
+import { api } from "@/convex/_generated/api";
 
 import Overlay from "./overlay";
 import { formatDistanceToNow } from "date-fns";
@@ -39,6 +42,24 @@ const BoardCard = ({
   const createdAtLabel = formatDistanceToNow(createdAt, {
     addSuffix: true,
   });
+
+  const { mutate: onFavourite, pending: pendingFavourite } = useApiMutation(
+    api.board.favourite
+  );
+  const { mutate: onUnfavourite, pending: pendingUnfavourite } = useApiMutation(
+    api.board.unfavourite
+  );
+
+  const toggleFavourite = () => {
+    if (isFavourite) {
+      onUnfavourite({ id }).catch(() => toast.error("Failed to unfavourite"));
+    } else {
+      onFavourite({ id, orgId }).catch(() =>
+        toast.error("Failed to favourite")
+      );
+    }
+  };
+
   return (
     <Link href={`/board/${id}`}>
       <div className="group aspect-[100/120] border rounded-lg flex flex-col justify-between overflow-hidden">
@@ -46,7 +67,10 @@ const BoardCard = ({
           <Image src={imageUrl} alt={title} fill className="object-fill" />
           <Overlay />
           <Actions id={id} title={title} side="right">
-            <button title="more" className="absolute top-1 right-1 group-hover:opacity-100 opacity-0 transition-opacity px-3 py-2 outline-none">
+            <button
+              title="more"
+              className="absolute top-1 right-1 group-hover:opacity-100 opacity-0 transition-opacity px-3 py-2 outline-none"
+            >
               <MoreHorizontal className="opacity-75 hover:opacity-100 text-white transition-opacity " />
             </button>
           </Actions>
@@ -56,8 +80,8 @@ const BoardCard = ({
           title={title}
           createdAt={createdAtLabel}
           authorLabel={authorLabel}
-          onClick={() => {}}
-          disabled={false}
+          onClick={toggleFavourite}
+          disabled={pendingFavourite || pendingUnfavourite}
         />
       </div>
     </Link>

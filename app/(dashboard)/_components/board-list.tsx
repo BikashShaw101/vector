@@ -63,7 +63,7 @@ export const BoardList = ({ orgId, query }: BoardListProps) => {
             imageUrl={board.imageUrl}
             createdAt={board._creationTime}
             orgId={board.orgId}
-            isFavourite={false}
+            isFavourite={board.isFavourite}
           />
         ))}
       </div>
