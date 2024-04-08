@@ -1,7 +1,7 @@
 "use client";
 import { useSelf, useOthers } from "@/liveblocks.config";
 import { UserAvatar } from "./user-avatar";
-import { connectionIDToColor } from "@/lib/utils";
+import { connectionIdToColor } from "@/lib/utils";
 
 const MAX_SHOWN_USER = 2;
 
@@ -15,7 +15,7 @@ export const Participants = () => {
         {user.slice(0, MAX_SHOWN_USER).map(({ connectionId, info }) => {
           return (
             <UserAvatar
-              borderColor={connectionIDToColor(connectionId)}
+              borderColor={connectionIdToColor(connectionId)}
               key={connectionId}
               src={info?.picture}
               name={info?.name}
@@ -25,7 +25,7 @@ export const Participants = () => {
         })}
         {currentUser && (
           <UserAvatar
-            borderColor={connectionIDToColor(currentUser.connectionId)}
+            borderColor={connectionIdToColor(currentUser.connectionId)}
             src={currentUser?.info?.picture}
             name={`${currentUser?.info?.name} (You)`}
             fallback={currentUser?.info?.name?.[0]}
