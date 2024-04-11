@@ -106,7 +106,7 @@ const About = () => {
           >
             About us
           </h1>
-          <hr className="my-4 mx-10" />
+          <hr className="my-4 mx-10 text-white bg-white" />
         </div>
         <div className={cn("text-slate-50", font.className)}>
           <p className="text-3xl mb-2 font-bold text-center">College Team</p>
