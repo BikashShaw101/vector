@@ -88,7 +88,7 @@ const About = () => {
   return (
     <>
       <div className="max-w-screen-5xl relative min-h-full bg-blue-950 shadow mx-auto py-7 px-4 my-0 ">
-        <div className="mb-7 flex items-center justify-between">
+        <div className="mb-7 flex lg:flex-row flex-col gap-y-5 items-center justify-between">
           <Link
             href={"/"}
             className={cn(
