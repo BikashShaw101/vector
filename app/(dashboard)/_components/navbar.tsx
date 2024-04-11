@@ -7,6 +7,8 @@ import {
 } from "@clerk/nextjs";
 import { SearchInput } from "./search-input";
 import InviteButton from "./invite-button";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const { organization } = useOrganization();
@@ -39,6 +41,9 @@ const Navbar = () => {
           }}
         />
       </div>
+      <Button variant={"outline"}  >
+        <Link href={"/about"} className="bg-transparent" >About</Link>
+      </Button>
       {organization && <InviteButton />}
       <UserButton />
     </div>
