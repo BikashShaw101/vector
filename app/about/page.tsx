@@ -88,11 +88,11 @@ const About = () => {
   return (
     <>
       <div className="max-w-screen-5xl relative min-h-full bg-blue-950 shadow mx-auto py-7 px-4 my-0 ">
-        <div className="mb-7 flex lg:flex-row flex-col gap-y-5 items-center justify-between">
+        <div className="mb-7 ">
           <Link
             href={"/"}
             className={cn(
-              "px-5 py-2 bg-white font-semibold shadow-md rounded-md text-slate-800",
+              "left-0 translate-x-1/2 px-5 py-2 bg-white font-semibold shadow-md rounded-md text-slate-800",
               font.className
             )}
           >
@@ -100,13 +100,12 @@ const About = () => {
           </Link>
           <h1
             className={cn(
-              "font-semibold text-6xl text-slate-100 text-center  ",
+              "font-semibold text-6xl mt-7 text-slate-100 text-center  ",
               font.className
             )}
           >
             About us
           </h1>
-          <hr className="my-4 mx-10 text-white bg-white" />
         </div>
         <div className={cn("text-slate-50", font.className)}>
           <p className="text-3xl mb-2 font-bold text-center">College Team</p>
