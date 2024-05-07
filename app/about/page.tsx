@@ -1,6 +1,6 @@
 import React from "react";
 import AboutCard from "./_components/about-card";
-import { Kalam } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 
 import bhawesh from "@/public/member/bhawesh.jpeg";
@@ -9,13 +9,14 @@ import bipul from "@/public/member/bipul.jpeg";
 import saptarshi from "@/public/member/saptarshi.jpg";
 import rahul from "@/public/member/rahul.jpeg";
 import Link from "next/link";
+import { MoveLeft } from "lucide-react";
 
 const memberData = [
   {
     name: "Bikash kumar Shaw",
     stats: "Developer and Designer",
     desc:
-      "Bikash shaw, Love to do coding and Full Stack Developer , hobbies : Editing, Nature Lover , Profession: Graphic Designer",
+      "Bikash shaw, Love to do coding and explore new things, Professional Graphic Designer and Video Editor ",
 
     img: bikash,
     links: {
@@ -79,7 +80,7 @@ const memberData = [
   },
 ];
 
-const font = Kalam({
+const font = Poppins({
   subsets: ["latin"],
   weight: ["400"],
 });
@@ -88,15 +89,15 @@ const About = () => {
   return (
     <>
       <div className="max-w-screen-5xl relative min-h-full bg-blue-950 shadow mx-auto py-7 px-4 my-0 ">
-        <div className="mb-7 ">
+        <div className="mb-7">
           <Link
             href={"/"}
             className={cn(
-              "left-0 translate-x-1/2 px-5 py-2 bg-white font-semibold shadow-md rounded-md text-slate-800",
+              "flex items-center text-white font-semibold shadow-md rounded-md text-xl",
               font.className
             )}
           >
-            Home
+            <MoveLeft size={30} strokeWidth={2.5} className="text-white" />
           </Link>
           <h1
             className={cn(
@@ -116,8 +117,8 @@ const About = () => {
             fiem batch 2021 - 2024
           </p>
         </div>
-        <div className="py-8 px-4 bg-white rounded-xl shadow-md dark:bg-gray-800 w-full ">
-          <div className="flex flex-col lg:flex-row overflow-x-scroll rounded-md shadow-lg drop-shadow-md items-center justify-center md:flex-row md:justify-evenly">
+        <div className="py-8 px-4 rounded-xl shadow-md dark:bg-gray-800 w-full ">
+          <div className="flex gap-3 flex-wrap 2xl:flex-nowrap rounded-md shadow-lg drop-shadow-md items-center justify-center ">
             {memberData.map((member, index) => (
               <AboutCard
                 key={index}
@@ -129,6 +130,40 @@ const About = () => {
               />
             ))}
           </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto">
+          <footer className="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+              © 2024{" "}
+              <Link
+                href="https://bikashkumarshaw.netlify.app/"
+                className="hover:underline "
+                target="_blank"
+              >
+                BikashKumarShaw
+              </Link>
+              . All Rights Reserved.
+            </span>
+            <ul className="flex flex-wrap items-center mt-3 sm:mt-0">
+              <li>
+                <a
+                  href="https://bikashkumarshaw.netlify.app/#about"
+                  className="mr-4 text-sm text-gray-500 hover:underline md:mr-6 dark:text-gray-400"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://bikashkumarshaw.netlify.app/#contact"
+                  className="text-sm text-gray-500 hover:underline dark:text-gray-400"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </footer>
         </div>
       </div>
     </>

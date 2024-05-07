@@ -1,7 +1,5 @@
-"use client"
+"use client";
 
-import { useState } from "react";
-import { X } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -18,43 +16,23 @@ interface AboutCardProps {
 }
 
 const AboutCard = ({ name, stats, desc, links, img }: AboutCardProps) => {
-  const [active, setActive] = useState(false);
-  const handleMemberDescription = () => {
-    setActive(true);
-  };
   return (
-    <div className="p-4 my-5 lg:my-0 ">
-      {active && (
-        <>
-          <div className="fixed top-0 left-0 min-w-screen lg:w-screen z-[60] min-h-full overflow-hidden bg-slate-800 flex items-center justify-center p-10">
-            <Image
-              src={img}
-              alt="memberProfile"
-              className="xl:w-2/5 md:w-5/5 h-auto rounded-lg xl:hover:scale-110 transition-all duration-200 "
-            />
-          </div>
-          <X
-            className="text-white text-2xl font-bold z-[99] fixed right-4 top-4 cursor-pointer"
-            onClick={() => setActive(false)}
-          />
-        </>
-      )}
+    <div className="rounded-lg my-5 lg:my-0 bg-white p-20">
       <div className="mb-4 text-center opacity-90">
         <div className="block">
           <Image
             alt="profile"
             src={img}
             className="mx-auto object-cover rounded-full h-40 w-40 cursor-pointer"
-            onClick={handleMemberDescription}
           />
         </div>
       </div>
-      <div className="text-center">
+      <div className="text-center h-[300px] my-4">
         <p className="text-2xl text-gray-800 dark:text-white">{name}</p>
-        <p className="text-xl line-clamp-1 overflow-auto font-light text-gray-500 dark:text-gray-200">
+        <p className="text-xl overflow-auto font-light text-gray-500 dark:text-gray-200">
           {stats}
         </p>
-        <p className="max-w-xs py-4 font-light text-gray-500 text-md dark:text-gray-400 line-clamp-2 overflow-y-auto">
+        <p className="max-w-xs py-4 font-light text-gray-500 text-md dark:text-gray-400  overflow-y-auto">
           {desc}
         </p>
       </div>

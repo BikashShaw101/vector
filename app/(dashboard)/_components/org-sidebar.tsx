@@ -23,10 +23,10 @@ const OrgSidebar = () => {
       <Link href={"/"}>
         <div className="flex items-center gap-x-2">
           <Image
-            src={"/vector.png"}
+            src={"/logo.svg"}
             alt="logo"
-            width={40}
-            height={40}
+            width={36}
+            height={36}
             className=""
           />
           <span className={cn("font-semibold text-2xl", font.className)}>

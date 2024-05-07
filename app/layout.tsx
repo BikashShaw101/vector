@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import { ConvexClientProvider } from "@/providers/convex-client-provider";
-import { ModalProvider } from "@/components/modals/modal-provider";
+import { ModalProvider } from "@/providers/modal-provider";
 import { Suspense } from "react";
 import { Loading } from "./board/[boardId]/_components/loading";
 
