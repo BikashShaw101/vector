@@ -35,11 +35,11 @@ export const create = mutation({
       .withIndex("by_org", (q) => q.eq("orgId", args.orgId))
       .collect();
 
-    if (existingBoards.length >= ORG_BOARD_LIMIT) {
-      throw new Error(
-        "You have reached the maximum number of boards for this organization"
-      );
-    }
+    // if (existingBoards.length >= ORG_BOARD_LIMIT) {
+    //   throw new Error(
+    //     "You have reached the maximum number of boards for this organization"
+    //   );
+    // }
 
     const board = await ctx.db.insert("boards", {
       title: args.title,
