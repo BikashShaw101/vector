@@ -18,7 +18,7 @@ import { toast } from "sonner";
 import ConfirmModal from "@/components/confirm-modal";
 import { Button } from "./ui/button";
 import { useRenameModal } from "@/store/use-rename-modal";
-
+import { useAuth } from "@clerk/clerk-react";
 interface ActionsProps {
   children: React.ReactNode;
   side?: DropdownMenuContentProps["side"];
@@ -34,6 +34,7 @@ export const Actions = ({
   id,
   title,
 }: ActionsProps) => {
+  const { orgRole } = useAuth();
   const { onOpen } = useRenameModal();
   const { mutate, pending } = useApiMutation(api.board.remove);
   const onCopyLink = () => {
@@ -72,19 +73,21 @@ export const Actions = ({
         >
           <Pencil className="h-4 w-4 mr-2" /> Rename
         </DropdownMenuItem>
-        <ConfirmModal
-          header="Delete board?"
-          description="This will remove the board and its contents"
-          onConfirm={onDelete}
-          disabled={pending}
-        >
-          <Button
-            variant={"ghost"}
-            className="p-3 w-full justify-start cursor-pointer flex items-center "
+        {orgRole === "org:admin" && (
+          <ConfirmModal
+            header="Delete board?"
+            description="This will remove the board and its contents"
+            onConfirm={onDelete}
+            disabled={pending}
           >
-            <Trash2 className="h-4 w-4 mr-2" /> Delete
-          </Button>
-        </ConfirmModal>
+            <Button
+              variant={"ghost"}
+              className="p-3 w-full justify-start cursor-pointer flex items-center "
+            >
+              <Trash2 className="h-4 w-4 mr-2" /> Delete
+            </Button>
+          </ConfirmModal>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
