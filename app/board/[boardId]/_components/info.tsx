@@ -13,7 +13,6 @@ import { useRenameModal } from "@/store/use-rename-modal";
 import { Menu } from "lucide-react";
 interface InfoProps {
   boardId: string;
-
 }
 
 const font = Poppins({
