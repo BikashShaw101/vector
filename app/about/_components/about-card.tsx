@@ -27,12 +27,12 @@ const AboutCard = ({ name, stats, desc, links, img }: AboutCardProps) => {
           />
         </div>
       </div>
-      <div className="text-center h-[300px] my-4">
+      <div className="text-center h-[300px] w-[180px] my-4">
         <p className="text-2xl text-gray-800 dark:text-white">{name}</p>
         <p className="text-xl overflow-auto font-light text-gray-500 dark:text-gray-200">
           {stats}
         </p>
-        <p className="max-w-xs py-4 font-light text-gray-500 text-md dark:text-gray-400  overflow-y-auto">
+        <p className="max-w-xs py-4 font-light text-gray-500 text-md dark:text-gray-400">
           {desc}
         </p>
       </div>
