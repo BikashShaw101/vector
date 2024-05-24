@@ -13,12 +13,15 @@ import {
 import { useApiMutation } from "@/hooks/use-api-mutation";
 import { api } from "@/convex/_generated/api";
 
-import { Link2, Pencil, Trash2 } from "lucide-react";
+import { Link2, Pencil, Trash2, ArrowDownToLine } from "lucide-react";
 import { toast } from "sonner";
 import ConfirmModal from "@/components/confirm-modal";
 import { Button } from "./ui/button";
 import { useRenameModal } from "@/store/use-rename-modal";
 import { useAuth } from "@clerk/clerk-react";
+import { takeScreenshot } from "@/lib/utils";
+import { CanvasMode, CanvasState } from "@/types/canvas";
+
 interface ActionsProps {
   children: React.ReactNode;
   side?: DropdownMenuContentProps["side"];
@@ -52,6 +55,9 @@ export const Actions = ({
       })
       .catch(() => toast.error("Failed to remove board"));
   };
+  const onDownload = () => {
+    takeScreenshot("Canvas", "screenshot", "image/jpg", "#fff");
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
@@ -72,6 +78,12 @@ export const Actions = ({
           className="p-3 cursor-pointer flex items-center outline-none hover:bg-slate-100 transition-colors"
         >
           <Pencil className="h-4 w-4 mr-2" /> Rename
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => onDownload()}
+          className="p-3 cursor-pointer flex items-center outline-none hover:bg-slate-100 transition-colors"
+        >
+          <ArrowDownToLine className="h-4 w-4 mr-2" /> Download
         </DropdownMenuItem>
         {orgRole === "org:admin" && (
           <ConfirmModal

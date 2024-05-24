@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import html2canvas from "html2canvas";
 
 import { 
   Camera, 
@@ -180,3 +181,20 @@ export function getSvgPathFromStroke(stroke: number[][]) {
   d.push("Z");
   return d.join(" ");
 };
+
+export function takeScreenshot(elementId:string,fileName:string,fileType:string,backgroundColor:string = "#fff"){
+  const element = document.getElementById(elementId)
+  if(!element) return
+
+  html2canvas(element,{backgroundColor:backgroundColor}).then(canvas => {
+    let image = canvas.toDataURL(fileType)
+    // console.log("The image is",image)
+    const  a = document.createElement("a")
+    a.href = image
+    a.download = fileName
+    a.click()
+
+  }).catch((err)=>{
+    console.log("We cannot take the screenshot of this canvas at the moment",err)
+  })
+}
